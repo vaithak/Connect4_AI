@@ -1,0 +1,288 @@
+/*---------chat window---------------*/
+html, body, .container-fluid, .row{
+	height:100%;
+}
+
+.top_spac {
+	margin: 20px 0 0;
+}
+
+.incoming_msg_img {
+	display: inline-block;
+	width: 8%;
+}
+
+.incoming_msg_img img {
+	border-radius:50%;
+	width: 100%;
+}
+
+.received_msg {
+	display: inline-block;
+	padding: 0 0 0 5px;
+	vertical-align: top;
+	width: 90%;
+	margin: 0px 0 5px;
+}
+
+.received_withd_msg p {
+	background: #ebebeb none repeat scroll 0 0;
+	border-radius: 0 15px 15px 15px;
+	color: #646464;
+	font-size: 14px;
+	margin: 0;
+	padding: 5px 10px 5px 12px;
+	width: 100%;
+}
+
+.time_date {
+	color: #747474;
+	display: block;
+	font-size: 12px;
+	margin: 8px 0 0;
+	visibility: hidden;
+}
+
+.notif{
+	color: #747474;
+	display: block;
+	font-size: 12px;
+	text-align:center;
+}
+
+.received_withd_msg {
+	width: 80%;
+}
+
+.mesgs{
+	padding-top: 10px;
+	height: 97%;
+  	width: 100%;
+}
+
+.sent_msg p {
+	background:#0465ac;
+	border-radius: 12px 15px 15px 0;
+	font-size: 14px;
+	margin: 0;
+	color: #fff;
+	padding: 5px 10px 5px 12px;
+	width: 100%;
+}
+
+.outgoing_msg {
+	overflow: hidden;
+	/* margin: 26px 0 26px; */
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.sent_msg {
+	float: right;
+	width: 80%;
+}
+
+.input_msg_write input {
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	border: medium none;
+	color: #4c4c4c;
+	font-size: 15px;
+	min-height: 48px;
+	width: 100%;
+	outline:none;
+}
+
+.type_msg {
+	border-top: 1px solid #c4c4c4;
+	padding: 5px;
+	position: absolute;
+	width: 95%;
+	/* bottom: 0px; */
+}
+
+.msg_send_btn {
+	background: #05728f none repeat scroll 0 0;
+	border:none;
+	border-radius: 50%;
+	color: #fff;
+	cursor: pointer;
+	font-size: 15px;
+	height: 33px;
+	position: absolute;
+	right: 0;
+	top: 11px;
+	width: 33px;
+}
+
+.author{
+	font-size:10px;
+	text-align: center;
+}
+
+.messaging {
+	padding: 10px 10px 50px 10px;
+	height:80% !important;
+	margin-top: 60px;
+	border: 1px solid;
+}
+
+.msg_history {
+	height:90%;
+	overflow-y: auto;
+}
+
+
+.cell{
+	width:14.285%;	
+	height:16.7%;
+	position:relative;
+	overflow:hidden;
+	float:left;
+	border:10px solid rgb(69, 170, 184)
+}
+.cell:before{
+	content: '';
+	position: absolute;
+	bottom: 0%;
+	width: 100%;
+	height: 100%;
+	border-radius: 100%;
+	box-shadow: 0px 300px 0px 345px rgb(69, 170, 184);
+}
+
+p {
+	clear:both;
+	margin:0;
+}
+
+.board {
+	width:72%;
+	height:62%;
+	margin:0 auto;
+	position:relative;
+	border:20px solid rgb(69, 170, 184);
+	background:white;
+}
+
+.leftFoot, .rightFoot {
+	background-color:rgb(69, 170, 184);
+	width:30px;
+	height:100px;
+	float:left;
+}
+
+.leftFoot {
+	margin-left:-20px;
+}
+.rightFoot {
+	float:right;
+	margin-right:-20px;
+}
+
+.leftFoot:after, .rightFoot:after {
+	content:' ';
+	width: 0; 
+	height: 0; 
+	border-left: 35px solid transparent;
+	border-right: 35px solid transparent;	
+	border-bottom: 80px solid rgb(69, 170, 184);
+	position: absolute;
+	bottom: -100px;
+}
+
+.leftFoot:after {
+	left:-40px;
+}
+.rightFoot:after {
+	right:-40px;
+}
+
+.active-r .cell:after {
+	background-color: rgba(240, 107, 80,0.2);
+	content: ' ';
+	height: 120px;
+	width: 120px;
+	display: block;
+	display:none;
+}
+
+.active-y .cell:after {
+	background-color: rgba(225, 215, 114,0.2);
+	content: ' ';
+	height: 120px;
+	width: 120px;
+	display: block;
+	display:none;
+}
+
+.cell:hover:after {
+	display:block;
+}
+
+.cell.active-r:after {
+	display:block;
+	background-color: rgba(240, 107, 80,0.9);
+}
+.cell.active-y:after {
+	display:block;
+	background-color: rgba(225, 215, 114,0.9);
+}
+
+.reset {
+	background-color:rgb(57, 66, 64);
+	color:white;
+	border:none;
+	padding:10px;
+	font-size:20px;
+	text-align:center;
+	width:10%;
+	margin:0 auto;
+	display:block;
+	margin-bottom:10px;
+}
+
+h2 {
+	text-align:center;
+	font-family:sans-serif;
+	text-transform:uppercase;
+}
+.wrap  {
+	display:block;
+	height:100%;
+	padding-top:40px;
+}
+
+.wrap.winner-red {
+	background:rgb(240, 107, 80);
+}
+
+.wrap.winner-yellow {
+	background:rgb(225, 215, 114);
+}
+
+.wrap.winner-yellow .cell:hover:after, .wrap.winner-red .cell:hover:after {
+	display:none;
+}
+
+.wrap {
+	color:rgb(57, 66, 64);
+}
+
+.buttons {
+	text-align:center;
+	margin-bottom:10px;
+}
+
+@media screen and (max-width:600px) {
+	.board {
+		width:252px;
+	}
+	.cell {
+		width:32px;
+		height:32px;
+		border: 2px solid rgb(69, 170, 184);
+	}
+	.reset {
+		width:30%;
+	}
+}

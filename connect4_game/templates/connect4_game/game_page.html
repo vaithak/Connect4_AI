@@ -1,0 +1,64 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/Luegg/angularjs-scroll-glue/master/src/scrollglue.js"></script>
+    <link rel="stylesheet" href="{% static 'connect4_game/css/game.css' %}" />
+</head>
+
+<body>
+    {% verbatim %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-6" ng-app="connectFour" ng-controller="mainController as main">
+                <div class="wrap winner-{{main.winner}}">
+                    <u><h2 style="font-family:cursive ">Connect 4</h2></u><br>
+                    <div class="board active-{{main.active}}">
+                        <span class="cellrow" ng-repeat="cellrow in main.boardState track by $index">
+                                    <div ng-repeat="cell in cellrow track by $index" class="cell active-{{cell}}" ng-click="main.drop($parent.$index,$index, true)"></div>
+                                    <p style="clear:both;"></p>
+                                </span>
+                        <div class="leftFoot"></div>
+                        <div class="rightFoot"></div>
+                    </div>
+                    <div style="clear:both"></div>
+                    <button class="reset" ng-click="main.init()">Reset</button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 offset-lg-0 col-md-4 offset-md-1 col-sm-5 offset-sm-0 messaging">
+                <div class="mesgs">
+                    <div class="msg_history" id="chat-log">
+                    </div>
+                </div>
+                <div class="type_msg">
+                    <div class="input_msg_write">
+                        <input data-emojiable="true" data-emoji-input="unicode" type="text" id="chat-message-input" class="write_msg" placeholder="Type a message" />
+                        <button class="msg_send_btn" id="chat-message-submit" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endverbatim %}
+
+    <!-- <script src="{% static 'reconnecting-websocket.js' %}"></script> -->
+    <!-- <script src="http://crypto-js.googlecode.com/svn/tags/3.0.2/build/rollups/md5.js"></script> -->
+    <script>
+        var roomName = "{{roomname}}";
+        var username = "{{username}}";
+    </script>
+    <!-- <script src="https://cdn.rawgit.com/gdi2290/angular-websocket/v1.0.9/angular-websocket.min.js"></script> -->
+    <script src="{% static 'connect4_game/js/game.js' %}"></script>
+    <script src="{% static 'connect4_game/js/chat.js' %}"></script>
+</body>
+
+</html>

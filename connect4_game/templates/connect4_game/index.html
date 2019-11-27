@@ -1,0 +1,63 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Vaibhav Thakkar">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+
+    <title>Connect 4</title>
+    <meta name="keywords" content="game, gaming, connect_4, connect-4">
+        
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="{% static 'connect4_game/css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/v4-shims.css">
+    <link href="{% static 'connect4_game/css/animations.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <section id="game-section">
+  
+            <div class="row text-center game-unit">
+                <div class="game-caption">
+                    <div class="animation-element fade-in-slow">
+                        <h1 class="spaced tagline colored">CONNECT 4</h1>
+                        <form id="main_form" action="/" method="post">
+                            {% csrf_token %}
+                            {% if message %}
+                                <p style='color: red; font-size: 10px'>{{ message }}</p>
+                            {% endif %}
+                            <input id="user_name" type="text" name="user_name" placeholder="Enter Your Alias" 
+                            {% if username %}
+                                value = {{username}}
+                            {% endif %}
+                            >
+                            <br>
+                            <input id="against" type="hidden" name="against" value="computer">
+                            <input type="hidden" name="game_type" value="new">
+                        </form>
+                        <button class="game-tags btn btn-primary" id="against-ai">Play against AI &nbsp;<i class="fas fa-robot ml-1"></i></button>
+                        <button type="button" class="game-tags btn btn-primary" id="against-human">Play against Human &nbsp;<i class="fas fa-user ml-1"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'connect4_game/js/main.js' %}"></script>
+    <script>
+        $('#against-ai').click(function(){
+            $('#against').val('computer');
+            $('form#main_form').submit();
+        });
+        $('#against-human').click(function(){
+            $('#against').val('human');
+            $('form#main_form').submit();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400'); /* Raleway Font */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans'); /* Open Sans Font */
+@font-face {
+    font-family: 'Anurati';
+    src: url('../fonts/Anurati-Regular.otf');
+}
+
+/* --------------------------- /////////// GENERAL /////////// --------------------------- */
+/* -Color- */
+.colored {
+    color: rgb(40, 22, 82);
+}
+.colored-light {
+    color: #E84118;
+}
+/* -Link Styling- */
+a {
+    color: #fff;
+    font-family: Raleway, sans-serif;
+	text-decoration: none;
+}
+a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+a:hover {
+    color: #fff;
+	text-decoration: none;
+}
+a:active {
+    color: #fff;
+    text-decoration: none;
+}
+a:focus {
+    color: #fff;
+    text-decoration: none;
+}
+/* -Resets- */
+html, body { 
+    background-image: linear-gradient(rgba(211, 228, 226, 0.72), rgba(195, 233, 226, 0.72)), url(../images/background.png);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #FFF;
+    font-size: 16px;
+    line-height: 1.5rem; /* 24px */
+    max-width: 100%;
+	overflow-x: hidden;
+}
+/* -Full width fluid container- */
+.full-width {
+    padding-left: 0;
+    padding-right: 0;
+}
+/* -Text Styling */
+h1,h2,h3,h4,h5,h6 {
+	font-family: Anurati, sans-serif;
+    font-weight: 400;
+}
+h1 {
+    font-size: 2.25rem; /* 36px */
+} 
+h2 {
+    font-size: 1.75rem; /* px */
+}
+h3 {
+    font-size: 1.25rem; /* 20px */
+}
+p {
+    font-family: Open Sans, sans-serif;
+    font-size: 0.9375rem; /* 15px */
+}
+.heading {
+	margin-bottom: 5px;
+}
+.strong {
+    font-weight: 700;
+}
+.subtle {
+	color: #777;
+}
+.spaced {
+    letter-spacing: 10px;
+}
+.text-center {
+	text-align: center;
+}
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+ul {
+    list-style-type: none;
+}
+/* -Margins and Floats- */
+.floated-left {
+     float: left;
+}
+.floated-right {
+    float: right;
+}
+.inline {
+	display: inline;
+}
+.offset {
+	margin-left: 10px;
+}
+.tiny-margin {
+    margin-bottom: 1.5em /* 24px */
+}
+.small-margin {
+	margin-bottom: 3em; /* 48px */
+}
+.medium-margin {
+	margin-bottom: 6em; /* 100px */
+}
+.large-margin {
+	margin-bottom: 12em; /* 192px */
+}
+/* -RESPONSIVE STYLES- */
+@media (min-width: 320px) and (max-width : 640px) {
+    .large-margin {
+	   margin-bottom: 6em; /* 100px */
+}
+}
+/* -<hr>- */
+hr {
+    border-top: 1px solid #DDD;
+	width: 100%;
+	margin: 20px 0 20px 0;
+}
+.hr-left {
+    border-top: 1px solid #DDD;
+	display: inline-block;
+    height: 1px;
+	width: 20%;
+	margin-right: 15px;
+	margin-bottom: 10px;
+}
+.hr-right {
+    border-top: 1px solid #DDD;
+	display: inline-block;
+    height: 1px;
+	width: 20%;
+	margin-left: 15px;
+	margin-bottom: 10px;
+}
+/* Underlines */
+.short-hr-center::after {
+    border-top: 3px solid;
+    border-color: #E48632;
+    content: "";
+    display: block;
+    height: 1px;
+    width: 35px;
+    margin: 8px auto;
+}
+.short-hr-left::after {
+    border-top: 3px solid;
+    border-color: #E48632;
+	content: "";
+	display: block;
+	height: 1px;
+	width: 45px;
+	margin: 8px auto 0 0;
+}
+/* General input fields */
+input {
+    height: 45px;
+    padding-left: 10px;
+    border: 1px solid #D4D4D4 !important;
+    color:black !important;
+    border-radius:10px;
+}
+input:focus {
+    border: 1px solid #333;
+    outline: none;
+}
+textarea {
+    height: 150px;
+	width: 100%;
+    max-width: 100%;
+	padding-top: 10px;
+	padding-left: 10px;
+    border: 1px solid #D4D4D4 !important;
+}
+textarea:focus {
+    border: 1px solid #333;
+    outline: none;
+}
+
+.btn-primary {
+    font-family: Raleway-SemiBold;
+    margin: 5px;
+    padding: 9px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 13px;
+    color: rgba(232, 236, 240, 0.75);
+    letter-spacing: 1px;
+    line-height: 15px;
+    border: 2px solid rgba(12, 13, 14, 0.75);
+    border-radius: 40px;
+    /* background: transparent; */
+    background: rgb(40, 22, 82);
+    transition: all 0.3s ease 0s;
+  }
+  
+  .btn-primary:hover {
+    color: #FFF;
+    background: rgba(13, 13, 14, 0.98);
+    border: 2px solid rgba(58, 133, 191, 0.75);
+  }
+
+/* --------------------------- /////////// HERO IMAGE /////////// --------------------------- */
+/* -Hero Image Caption- */
+.game-caption {
+    color: #FFF;
+	text-shadow: none; 
+    padding: 20px;
+    margin: auto;
+}
+.tagline {
+    font-family: anurati, sans-serif;
+}
+.game-tags {
+    font-family: Raleway, sans-serif;
+    font-size: 1.125rem; /* 18px */
+}
+
+/* -RESPONSIVE STYLES- */
+@media (min-width : 320px) {
+
+    .game-unit {
+        height: 100vh;
+    }
+    .game-caption {
+        width: 80%;
+        margin-top: 20vh;
+    }
+    .tagline {
+        font-size: 3rem; /* 32px */
+    }
+}
+@media (min-width : 480px) {
+    .tagline {
+        font-size: 4.5rem; /* 40px */
+    }
+}
+@media (min-width : 640px) {
+    .tagline {
+        font-size: 4rem; /* 48px */
+    }
+    .game-caption {
+        margin-top: 32vh;
+    }
+}
+@media (min-width : 1024px) {
+    .tagline {
+        font-size: 4.5rem; /* 56px */
+    }
+}
