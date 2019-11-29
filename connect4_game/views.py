@@ -55,11 +55,8 @@ def validate_post_request(request):
         result['message'] = "Invalid request"
         return result
     
-    if request.POST['against'] == 'computer':
-        result['status']  = True
-        return result
-    
-    return True
+    result['status']  = True
+    return result
 
 
 def index(request):
