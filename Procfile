@@ -1,0 +1,1 @@
+web: daphne Connect4_AI.asgi:application --port $PORT --bind 0.0.0.0
