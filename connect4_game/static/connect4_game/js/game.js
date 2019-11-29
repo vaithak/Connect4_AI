@@ -3,7 +3,7 @@ angular.module('connectFour', ['luegg.directives'])
     var stack = [];
     var onmessageDefer;
     var socket = {
-        ws: new WebSocket('ws://' + window.location.host + '/ws/game/' + roomName + '/'),
+        ws: new WebSocket('wss://' + window.location.host + '/ws/game/' + roomName + '/'),
         send: function(data) {
             console.log(data);
             data = JSON.stringify(data);
