@@ -35,10 +35,14 @@
                             >
                             <br>
                             <input id="against" type="hidden" name="against" value="computer">
-                            <input type="hidden" name="game_type" value="new">
+                            <input id="game_type" type="hidden" name="game_type" value="new">
+                            <button class="game-tags btn btn-primary" id="against-ai">Play against AI &nbsp;<i class="fas fa-robot ml-1"></i></button>
+                            <button type="button" class="game-tags btn btn-primary" id="against-human">Play against Human &nbsp;<i class="fas fa-user ml-1"></i></button>
+                            <hr>
+                            <p style='color: black; font-size: 10px'>Or join using existing game: </p>
+                            <input id="existing_game_code" type="text" name="game_id" placeholder="Enter Game Code to join">
+                            <button type="button" class="game-tags btn btn-secondary" id="enter-existing">Enter Game</button>
                         </form>
-                        <button class="game-tags btn btn-primary" id="against-ai">Play against AI &nbsp;<i class="fas fa-robot ml-1"></i></button>
-                        <button type="button" class="game-tags btn btn-primary" id="against-human">Play against Human &nbsp;<i class="fas fa-user ml-1"></i></button>
                     </div>
                 </div>
             </div>
@@ -57,6 +61,15 @@
         $('#against-human').click(function(){
             $('#against').val('human');
             $('form#main_form').submit();
+        });
+        $('#enter-existing').click(function(){
+            var str = $('#existing_game_code').val();
+            console.log(str);
+            if(str.length != 0){
+                $('#game_type').val('existing');
+                $('form#main_form').submit();
+            }
+            console.log("hi");
         });
     </script>
 </body>

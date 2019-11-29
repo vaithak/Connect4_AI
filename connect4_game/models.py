@@ -9,4 +9,4 @@ class Game(models.Model):
     opponent_name = models.CharField(max_length=20, default="")
 
     def __str__(self):
-        return "Creator: {}, Game Id: {}".format(self.creator, self.game_id)
+        return "Creator: {}, Game Id: {}, State: {}, Opponent: {}".format(self.creator, self.game_id, self.game_state, self.opponent_name)
