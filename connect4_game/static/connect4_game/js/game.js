@@ -3,9 +3,8 @@ angular.module('connectFour', ['luegg.directives'])
     var stack = [];
     var onmessageDefer;
     var socket = {
-        ws: new WebSocket('wss://' + window.location.host + '/ws/game/' + roomName + '/'),
+        ws: new ReconnectingWebSocket(ws_scheme + window.location.host + '/ws/game/' + roomName + '/'),
         send: function(data) {
-            console.log(data);
             data = JSON.stringify(data);
             if (socket.ws.readyState == 1) {
                 socket.ws.send(data);
@@ -21,6 +20,10 @@ angular.module('connectFour', ['luegg.directives'])
             }
         }
     };
+
+    if (!socket.ws.readyState === WebSocket.CLOSED)
+        socket.ws.close();
+
     socket.ws.onopen = function(event){
         socket.ws.send(JSON.stringify({'command': 'fetch_state' }));
 
@@ -66,7 +69,7 @@ angular.module('connectFour', ['luegg.directives'])
     
     vm.onmessage = function(event) {
         var data = JSON.parse(event.data);
-        console.log(data);
+
         // simulating drop
         data = data['message'];
         if(data['command']=='new_state' && data['state']['prev_player'] != username){
@@ -144,7 +147,6 @@ angular.module('connectFour', ['luegg.directives'])
                             });
                         }
                         if (typeof(callback) !== 'undefined'){
-                            console.log("hi");
                             callback();
                         }
                     }

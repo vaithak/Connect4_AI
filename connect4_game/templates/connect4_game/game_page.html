@@ -20,6 +20,7 @@
             <div class="col-lg-7 col-md-6 col-sm-6" ng-app="connectFour" ng-controller="mainController as main">
                 <div class="wrap winner-{{main.winner}}">
                     <u><h2 style="font-family:cursive ">Connect 4</h2></u><br>
+                    <p><b>Game Code: &nbsp;&nbsp;</b><span id="game-code"></span></p>
                     <div class="board active-{{main.active}}">
                         <span class="cellrow" ng-repeat="cellrow in main.boardState track by $index">
                                     <div ng-repeat="cell in cellrow track by $index" class="cell active-{{cell}}" ng-click="main.drop($parent.$index,$index, true)"></div>
@@ -53,10 +54,14 @@
     <!-- <script src="{% static 'reconnecting-websocket.js' %}"></script> -->
     <!-- <script src="http://crypto-js.googlecode.com/svn/tags/3.0.2/build/rollups/md5.js"></script> -->
     <script>
+        var ws_scheme = window.location.protocol == "https:" ? "wss://" : "ws://";
         var roomName = "{{roomname}}";
         var username = "{{username}}";
+
+        $('#game-code').html(roomName);
     </script>
     <!-- <script src="https://cdn.rawgit.com/gdi2290/angular-websocket/v1.0.9/angular-websocket.min.js"></script> -->
+    <script src="{% static 'connect4_game/js/reconnecting-websocket.js' %}"></script>
     <script src="{% static 'connect4_game/js/game.js' %}"></script>
     <script src="{% static 'connect4_game/js/chat.js' %}"></script>
 </body>

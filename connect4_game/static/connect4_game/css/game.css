@@ -37,10 +37,10 @@ html, body, .container-fluid, .row{
 
 .time_date {
 	color: #747474;
-	display: block;
+	/* display: block; */
+	display: none;
 	font-size: 12px;
 	margin: 8px 0 0;
-	visibility: hidden;
 }
 
 .notif{
@@ -73,8 +73,7 @@ html, body, .container-fluid, .row{
 .outgoing_msg {
 	overflow: hidden;
 	/* margin: 26px 0 26px; */
-	margin-top: 3px;
-	margin-bottom: 3px;
+	margin: 12px;
 }
 
 .sent_msg {

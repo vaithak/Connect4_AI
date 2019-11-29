@@ -81,7 +81,6 @@ class GameConsumer(WebsocketConsumer):
                 mark=i
                 break
 
-        print(self.game.game_state)
         length = int(self.game.game_state[1:mark])
         mark = mark + 1 + length
         board_state = self.game.game_state[mark:mark+42]
@@ -175,7 +174,6 @@ class GameConsumer(WebsocketConsumer):
         if(self.commands[text_data_json['command']](self, text_data_json, self.scope["session"]["username"])):
             next_move_player = self.get_new_player(self.game.game_state)
             if (len(next_move_player)!=0) and (next_move_player == "ai") and ('state' in text_data_json):
-                print(next_move_player)
                 new_state_data = ai_move(self.game.game_state[0], text_data_json['state'])
                 self.new_state(new_state_data, "ai")
 
