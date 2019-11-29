@@ -80,7 +80,11 @@ angular.module('connectFour', ['luegg.directives'])
                 data = data['state'];
                 vm.dropAllowed = (data['new_player'] == username);
                 vm.active = data['active'];
-                vm.winner = (data['is_finished'] == 'true');
+                if(data['is_finished'] == true){
+                    if(vm.active == 'r') {vm.winner = "yellow";}
+                    else {vm.winner= "red";}
+                }
+                else{ vm.winner = false; }
                 if(vm.winner){
                     vm.dropAllowed = false;
                 }
@@ -100,7 +104,12 @@ angular.module('connectFour', ['luegg.directives'])
             data = data['state'];
             vm.dropAllowed = (data['new_player'] == username);
             vm.active = data['active'];
-            vm.winner = (data['is_finished'] == 'true');
+            if(data['is_finished'] == true){
+                if(vm.active == 'r') {vm.winner = "yellow";}
+                else {vm.winner= "red";}
+            }
+            else{ vm.winner = false; }
+            
             if(vm.winner){
                 vm.dropAllowed = false;
             }
@@ -153,6 +162,10 @@ angular.module('connectFour', ['luegg.directives'])
                 }, 50);
             })(1);
         }
+    };
+
+    vm.reset = function(){
+        socket.send({'command': 'reset_state' });
     };
 
 }]);

@@ -91,6 +91,17 @@ class GameConsumer(WebsocketConsumer):
         }
         self.send_state_message_to_websocket(content)
         return True
+    
+    def reset_state(self, data, sender):
+        self.game.game_state = "r" + str(len(self.scope["session"]["username"])) + "#" + self.scope["session"]["username"] + "000000000000000000000000000000000000000000f"
+        self.game.save()
+
+        content = {
+            'command': 'reset_state',
+            'state': self.state_to_json(self.game.game_state, "000000000000000000000000000000000000000000", 0, 0)
+        }
+
+        return self.send_state_message_to_group(content)
 
     # save and send new state
     def new_state(self, data, sender):
@@ -115,8 +126,9 @@ class GameConsumer(WebsocketConsumer):
         return True
     
     commands = {
-        'fetch_state': fetch_state,   # fetching previous messages
-        'new_state': new_state          # creating a new message
+        'fetch_state': fetch_state,   
+        'new_state': new_state,   
+        'reset_state': reset_state,
     }
 
     def state_to_json(self, compressed_state, normal_state, index, index2):

@@ -285,3 +285,7 @@ h2 {
 		width:30%;
 	}
 }
+
+button{
+	cursor: pointer !important;
+}

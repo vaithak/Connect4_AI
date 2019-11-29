@@ -15,7 +15,7 @@ def verify_board_state_difference(active, prev_board_state, state):
 
 # check if game finished
 def game_finished(user_state):
-	return False
+	return True
 
 # TODO
 def ai_move(curr_active, curr_state):
