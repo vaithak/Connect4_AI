@@ -87,7 +87,7 @@ int Solver::solve(const GameState &GS) {
     while(min < max) { // iteratively narrow the min-max exploration window -- similar to binary search
         int med = min + (max - min)/2;
 
-        // these two lines causes a great performance boost
+        // these two lines causes a performance boost
         if(med <= 0 && min/2 < med) med = min/2;
         else if(med >= 0 && max/2 > med) med = max/2;
 
@@ -106,9 +106,6 @@ unsigned long long Solver::getNodeCount() {
 int Solver::negamax(const GameState& GS, int alpha, int beta){
     nodeCount++;
 
-    if(GS.nbMoves() >= GameState::WIDTH*GameState::HEIGHT-2) // Game Tied
-        return 0;
-
     uint64_t curr_key = GS.unique_key();
     if(nodeCount<10000 && fixed_cache.find(curr_key) != fixed_cache.end())
         return fixed_cache[curr_key];
@@ -116,6 +113,9 @@ int Solver::negamax(const GameState& GS, int alpha, int beta){
     uint64_t next_moves = GS.possibleNonLosingMoves();
     if(next_moves == 0)     // if no possible non losing move, opponent wins next move
         return -(GameState::WIDTH*GameState::HEIGHT - GS.nbMoves())/2;
+
+    if(GS.nbMoves() >= GameState::WIDTH*GameState::HEIGHT-2) // Game Tied
+        return 0;
 
     int min = -(GameState::WIDTH*GameState::HEIGHT - 2 - GS.nbMoves())/2;    // lower bound of score as opponent cannot win next move
     if(alpha < min) {

@@ -2,6 +2,7 @@
 #define GAMESTATE_H
 
 #include <string>
+#include <stdint.h>
 
 namespace Connect4_AI{
     /** Reference:- http://blog.gamesolver.org/solving-connect-four/06-bitboard/
@@ -99,8 +100,8 @@ namespace Connect4_AI{
 
             static const int WIDTH  = 7;
             static const int HEIGHT = 6;
-            const static constexpr uint64_t bottom_mask = 1 + (1LL << (HEIGHT+1)) + (1LL << 2*(HEIGHT+1)) + (1LL << 3*(HEIGHT+1)) + (1LL << 4*(HEIGHT+1)) + (1LL << 5*(HEIGHT+1)) + (1LL << 6*(HEIGHT+1));
-            const static constexpr uint64_t board_mask  = bottom_mask * ((1LL << HEIGHT)-1);
+            static const uint64_t bottom_mask = 1 + (1LL << (HEIGHT+1)) + (1LL << 2*(HEIGHT+1)) + (1LL << 3*(HEIGHT+1)) + (1LL << 4*(HEIGHT+1)) + (1LL << 5*(HEIGHT+1)) + (1LL << 6*(HEIGHT+1));
+            static const uint64_t board_mask  = bottom_mask * ((1LL << HEIGHT)-1);
 
 
             void playCol(int col);

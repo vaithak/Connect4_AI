@@ -80,7 +80,7 @@ def index(request):
             if request.POST['against'] == 'computer':
                 new_game = Game.objects.create(
                     creator = request.session['username'],
-                    game_state = "r" + str(len(request.session['username'])) + "#" + request.session['username'] + "000000000000000000000000000000000000000000f",
+                    game_state = "y" + str(len(request.session['username'])) + "#" + request.session['username'] + "000000000000000000000000000000000000000000f",
                     against_ai = True,
                     opponent_name = "ai",
                 )
@@ -88,11 +88,11 @@ def index(request):
             elif request.POST['against'] == 'human':
                 new_game = Game.objects.create(
                     creator = request.session['username'],
-                    game_state = "r" + str(len(request.session['username'])) + "#" + request.session['username'] + "000000000000000000000000000000000000000000f",
+                    game_state = "y" + str(len(request.session['username'])) + "#" + request.session['username'] + "000000000000000000000000000000000000000000f",
                     against_ai = False,
                 )
                 game_id = new_game.game_id
-                return redirect('/game/' + game_id.urn[9:])
+            return redirect('/game/' + game_id.urn[9:])
         else:
             game_id = request.POST['game_id']
             return redirect('/game/' + game_id)

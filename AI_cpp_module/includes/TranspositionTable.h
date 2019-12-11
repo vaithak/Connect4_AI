@@ -2,7 +2,8 @@
 #define TRANSPOSITIONTABLE_H
 
 #include <vector>
-#include<cassert>
+#include <cassert>
+#include <cstring>
 
 
 // Reference: http://blog.gamesolver.org/solving-connect-four/07-transposition-table/

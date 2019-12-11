@@ -1,6 +1,5 @@
 #include "GameState.h"
 #include <stdint.h>
-#include <iostream>
 
 using namespace Connect4_AI;
 

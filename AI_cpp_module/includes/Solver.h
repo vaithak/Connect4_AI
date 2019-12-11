@@ -3,6 +3,7 @@
 
 #include "GameState.h"
 #include "TranspositionTable.h"
+#include <string>
 #include <unordered_map>
 
 namespace Connect4_AI{

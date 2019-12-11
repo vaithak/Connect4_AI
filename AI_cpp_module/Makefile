@@ -2,7 +2,7 @@ CXX=g++
 CXXFLAGS=--std=c++14 -W -Wall -O3 -I includes/ -DNDEBUG
 HEADERS=includes/GameState.h includes/Solver.h includes/TranspositionTable.h
 
-SRCS=AI.cpp src/Solver.cpp src/GameState.cpp
+SRCS=AI_test.cpp src/Solver.cpp src/GameState.cpp
 OBJS=$(subst .cpp,.o,$(SRCS))
 
 c4solver:$(OBJS) $(HEADERS)

@@ -3,7 +3,10 @@ from channels.generic.websocket import WebsocketConsumer
 import json
 import uuid
 from .models import Game
-from .helpers import ai_move, game_finished, verify_board_state_difference
+from .helpers import game_finished, verify_board_state_difference
+from .ai import AI 
+
+ai = AI()
 
 class GameConsumer(WebsocketConsumer):
     # verify state send by user
@@ -93,7 +96,7 @@ class GameConsumer(WebsocketConsumer):
         return True
     
     def reset_state(self, data, sender):
-        self.game.game_state = "r" + str(len(self.scope["session"]["username"])) + "#" + self.scope["session"]["username"] + "000000000000000000000000000000000000000000f"
+        self.game.game_state = "y" + str(len(self.scope["session"]["username"])) + "#" + self.scope["session"]["username"] + "000000000000000000000000000000000000000000f"
         self.game.save()
 
         content = {
@@ -105,6 +108,9 @@ class GameConsumer(WebsocketConsumer):
 
     # save and send new state
     def new_state(self, data, sender):
+        if self.game.game_state[-1] == 't':
+            return False
+
         if ('state' not in data) or (len(data['state']) == 0) or ('index' not in data) or ('index2' not in data):
             return False
 
@@ -185,8 +191,14 @@ class GameConsumer(WebsocketConsumer):
         self.game = Game.objects.get(pk=self.game_id)
         if(self.commands[text_data_json['command']](self, text_data_json, self.scope["session"]["username"])):
             next_move_player = self.get_new_player(self.game.game_state)
-            if (len(next_move_player)!=0) and (next_move_player == "ai") and ('state' in text_data_json):
-                new_state_data = ai_move(self.game.game_state[0], text_data_json['state'])
+            if (len(next_move_player)!=0) and (next_move_player == "ai") and ('state' in text_data_json) and (self.game.game_state[-1] == 'f'):
+                new_data = ai.best_move(list(text_data_json['state']), self.game.game_state[0])
+                print(new_data)
+                new_state_data = {}
+                new_state_data['state'] = new_data[0]
+                new_state_data['index'] = new_data[1]
+                new_state_data['index2'] = new_data[2]
+                print(new_state_data)
                 self.new_state(new_state_data, "ai")
 
     # Send message to room group
