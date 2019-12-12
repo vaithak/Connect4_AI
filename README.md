@@ -6,6 +6,7 @@
   * **Inbuilt chatting feature** - Anyone who has joined the game(whether playing or spectating) can chat along.  
   
 **References**  
+-> [Django Channels](https://channels.readthedocs.io/en/latest/)  
 -> [Connect Four - Wikipedia](https://en.wikipedia.org/wiki/Connect_Four)  
 -> [http://people.csail.mit.edu/plaat/mtdf.html](http://people.csail.mit.edu/plaat/mtdf.html)  
 -> [http://web.mit.edu/sp.268/www/2010/connectFourSlides.pdf](http://web.mit.edu/sp.268/www/2010/connectFourSlides.pdf)  
