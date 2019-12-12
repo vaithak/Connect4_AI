@@ -13,14 +13,20 @@ def ai_move(game_state, height, width, ai_stone):
     for col_num in range(width):
         if game_state[col_num] == '0':
             temp_GS = GameState(GS)
+
+            if temp_GS.isWinningMove(col_num):
+                mark_col_num = col_num
+                break
+
             temp_GS.playCol(col_num)
-            if score == -(solver.solve(temp_GS)):
+            temp_score = solver.solve(temp_GS)
+            if (score == -(temp_score)):
                 mark_col_num = col_num
                 break
     
     mark_row_num = 0
     for row_num in range(height-1, -1, -1):
-        if game_state[row_num*width + col_num] == '0':
+        if game_state[row_num*width + mark_col_num] == '0':
             mark_row_num = row_num
             break
 

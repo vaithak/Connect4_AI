@@ -8,8 +8,6 @@ __pycache__/
 *$py.class
 
 # C extensions
-*.so
-*_wrap.cpp
 *.o
 
 # Distribution / packaging
