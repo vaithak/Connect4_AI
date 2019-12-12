@@ -1,5 +1,6 @@
 #include "GameState.h"
 #include <stdint.h>
+#include <iostream>
 
 using namespace Connect4_AI;
 
@@ -30,6 +31,12 @@ GameState::GameState(){
     moves = 0;
     mask  = 0;
     current_position = 0;
+}
+
+GameState::GameState(const GameState &rhs){
+    moves = rhs.moves;
+    mask  = rhs.mask;
+    current_position = rhs.current_position; 
 }
 
 
@@ -72,6 +79,43 @@ unsigned int GameState::play(std::string seq) {
     }
 
     return seq.size();
+}
+
+
+unsigned int GameState::play_board_state(std::string board_state, char curr_stone) {
+    if(board_state.length() != WIDTH*HEIGHT)
+        return 0;   // failure
+
+    uint64_t mask_r = 0, mask_y = 0;
+    for(unsigned int i = 0; i < board_state.length(); i++) {
+        int row_num = i/WIDTH;
+        int col_num = i%WIDTH;
+        if(board_state[i] == 'r'){
+            moves ++;
+            mask_r |= (1LL<<((HEIGHT+1)*col_num + (HEIGHT - 1 - row_num)));
+        }
+        else if(board_state[i] == 'y'){
+            moves ++;
+            mask_y |= (1LL<<((HEIGHT+1)*col_num + (HEIGHT - 1 - row_num)));
+        }
+        else if(board_state[i] != '0'){
+            return 0;   // failure
+        }
+    }
+
+    if(curr_stone == 'r'){
+        current_position = mask_r;
+    }
+    else if(curr_stone == 'y'){
+        current_position = mask_y;
+    }
+    else{
+        return 0;   // failure
+    }
+
+    mask = mask_r ^ mask_y;
+
+    return 1;   // success
 }
 
 

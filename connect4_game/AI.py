@@ -1,25 +1,31 @@
-def game_state_to_moves(game_state, height, width, ai_stone):
-    each_row_red    = []
-    each_row_yellow = []
+from .Connect4AI import Solver, GameState
+import os
 
-    for row_num in range(height-1, -1, -1):
-        for col_num in range(width):
-            if game_state[row_num*width + col_num] == 'r':
-                each_row_red.append(str(col_num+1))
-            elif game_state[row_num*width + col_num] == 'y':
-                each_row_yellow.append(str(col_num+1))
+data_filename = os.path.join(os.path.dirname(__file__), 'score_data.txt')
+solver = Solver(data_filename)
 
-    res = []
-    if ai_stone == 'r':
-        res = [*sum(zip(each_row_yellow, each_row_red),())]
-        if len(each_row_yellow) > len(each_row_red):
-            res.append(each_row_yellow[-1])
-    elif ai_stone == 'y':
-        res = [*sum(zip(each_row_red, each_row_yellow),())]
-        if len(each_row_red) > len(each_row_yellow):
-            res.append(each_row_red[-1])
+def ai_move(game_state, height, width, ai_stone):
+    GS = GameState()
+    GS.play_board_state("".join(game_state), ai_stone)
+    score = solver.solve(GS)                     # max score
+    mark_col_num = 0
+
+    for col_num in range(width):
+        if game_state[col_num] == '0':
+            temp_GS = GameState(GS)
+            temp_GS.playCol(col_num)
+            if score == -(solver.solve(temp_GS)):
+                mark_col_num = col_num
+                break
     
-  return "".join(res)
+    mark_row_num = 0
+    for row_num in range(height-1, -1, -1):
+        if game_state[row_num*width + col_num] == '0':
+            mark_row_num = row_num
+            break
+
+    game_state[mark_row_num*width + mark_col_num] = ai_stone
+    return ("".join(game_state), mark_row_num, mark_col_num)
   
 
 # print the current state in matrix form

@@ -4,9 +4,7 @@ import json
 import uuid
 from .models import Game
 from .helpers import game_finished, verify_board_state_difference
-from .ai import AI 
-
-ai = AI()
+from .AI import ai_move
 
 class GameConsumer(WebsocketConsumer):
     # verify state send by user
@@ -192,13 +190,11 @@ class GameConsumer(WebsocketConsumer):
         if(self.commands[text_data_json['command']](self, text_data_json, self.scope["session"]["username"])):
             next_move_player = self.get_new_player(self.game.game_state)
             if (len(next_move_player)!=0) and (next_move_player == "ai") and ('state' in text_data_json) and (self.game.game_state[-1] == 'f'):
-                new_data = ai.best_move(list(text_data_json['state']), self.game.game_state[0])
-                print(new_data)
+                new_data = ai_move(list(text_data_json['state']), 6, 7, self.game.game_state[0])
                 new_state_data = {}
                 new_state_data['state'] = new_data[0]
                 new_state_data['index'] = new_data[1]
                 new_state_data['index2'] = new_data[2]
-                print(new_state_data)
                 self.new_state(new_state_data, "ai")
 
     # Send message to room group

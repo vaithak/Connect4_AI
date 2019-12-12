@@ -2,7 +2,6 @@
 #define GAMESTATE_H
 
 #include <string>
-#include <stdint.h>
 
 namespace Connect4_AI{
     /** Reference:- http://blog.gamesolver.org/solving-connect-four/06-bitboard/
@@ -97,6 +96,7 @@ namespace Connect4_AI{
 
         public:
             GameState();
+            GameState(const GameState &rhs);
 
             static const int WIDTH  = 7;
             static const int HEIGHT = 6;
@@ -108,6 +108,7 @@ namespace Connect4_AI{
             void playMove(uint64_t move);
             uint64_t possible() const;
             unsigned int play(std::string seq);
+            unsigned int play_board_state(std::string board_state, char curr_stone);
             uint64_t unique_key() const;
             int nbMoves() const;
             uint64_t possibleNonLosingMoves() const;

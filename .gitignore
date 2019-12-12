@@ -10,6 +10,7 @@ __pycache__/
 # C extensions
 *.so
 *_wrap.cpp
+*.o
 
 # Distribution / packaging
 .Python

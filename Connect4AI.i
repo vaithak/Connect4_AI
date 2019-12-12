@@ -3,6 +3,6 @@
 %include "stdint.i"
 %include "std_string.i"
 %include "std_vector.i"
-%include GameState.i
-%include TranspositionTable.i
-%include Solver.i
+%include swig_interface_files/GameState.i
+%include swig_interface_files/TranspositionTable.i
+%include swig_interface_files/Solver.i

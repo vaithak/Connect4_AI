@@ -166,8 +166,8 @@ class GameState(_object):
     __getattr__ = lambda self, name: _swig_getattr(self, GameState, name)
     __repr__ = _swig_repr
 
-    def __init__(self):
-        this = _Connect4AI.new_GameState()
+    def __init__(self, *args):
+        this = _Connect4AI.new_GameState(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:
@@ -188,6 +188,9 @@ class GameState(_object):
 
     def play(self, seq):
         return _Connect4AI.GameState_play(self, seq)
+
+    def play_board_state(self, board_state, curr_stone):
+        return _Connect4AI.GameState_play_board_state(self, board_state, curr_stone)
 
     def unique_key(self):
         return _Connect4AI.GameState_unique_key(self)
