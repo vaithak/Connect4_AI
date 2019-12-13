@@ -1,4 +1,4 @@
-# Connect4 Online Multiplayer Game
+# Connect4 Online Multiplayer Game with AI Bot
 
 [Live Link - play here](https://con-4.herokuapp.com)   
 
