@@ -107,7 +107,7 @@ int Solver::negamax(const GameState& GS, int alpha, int beta){
     nodeCount++;
 
     uint64_t curr_key = GS.unique_key();
-    if(nodeCount<10000 && fixed_cache.find(curr_key) != fixed_cache.end())
+    if(nodeCount<2000000 && fixed_cache.find(curr_key) != fixed_cache.end())
         return fixed_cache[curr_key];
     
     uint64_t next_moves = GS.possibleNonLosingMoves();
