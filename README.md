@@ -1,4 +1,7 @@
 # Connect4 Online Multiplayer Game
+
+[Live Link - play here](https://con-4.herokuapp.com)   
+
 ### Features  
   * **Play against AI**  
   * **Compete against friends** by sharing game code with them  
@@ -14,3 +17,4 @@
 -> [Birboard Reprsentation - 2](https://github.com/denkspuren/BitboardC4/blob/master/BitboardDesign.md)  
 -> [Transposition Tables](http://blog.gamesolver.org/solving-connect-four/07-transposition-table/)  
 -> [Null window search](https://cs.stackexchange.com/questions/1134/how-does-the-negascout-algorithm-work)  
+
