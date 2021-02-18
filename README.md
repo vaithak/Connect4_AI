@@ -21,6 +21,9 @@ Requirements - python 3, pip, gcc version 4.8+
      `python manage.py runserver`  
 <hr>   
 
+### Some bugs to fix
+- Currently, the application allows both players to have same usernames which results in a deadlock for moves.
+
 ### References  
   - [Django Channels](https://channels.readthedocs.io/en/latest/)  
   - [Connect Four - Wikipedia](https://en.wikipedia.org/wiki/Connect_Four)  
